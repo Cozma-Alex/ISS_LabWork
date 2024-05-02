@@ -1,0 +1,85 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.javamodularity.moduleplugin' version '1.8.12'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group 'javafx'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.11.0-M1'
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
+javafx {
+    version = '17.0.6'
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web', 'javafx.swing']
+}
+
+dependencies {
+    implementation('org.controlsfx:controlsfx:11.1.2')
+    implementation('com.dlsc.formsfx:formsfx-core:11.6.0') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation('net.synedra:validatorfx:0.4.0') {
+        exclude(group: 'org.openjfx')
+    }
+    implementation('org.kordamp.ikonli:ikonli-javafx:12.3.1')
+    implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
+    implementation('eu.hansolo:tilesfx:11.48') {
+        exclude(group: 'org.openjfx')
+    }
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.springframework.session:spring-session-core'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'org.postgresql:postgresql'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'jakarta.validation:jakarta.validation-api:3.1.0-M2'
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.json:json:20231013'
+    implementation 'com.liferay:com.fasterxml.jackson.databind:2.10.5.1.LIFERAY-PATCHED-1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.0-M1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // Mockito pentru mock-uri și integrarea cu JUnit Jupiter
+    testImplementation 'org.mockito:mockito-core:5.11.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.14'
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation 'org.json:json:20231013'
+
+    implementation project(':Shared')
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClass = 'javafx.client.Buggr'
+}

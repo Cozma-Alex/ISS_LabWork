@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mainPane" prefHeight="824.0" prefWidth="1536.0" stylesheets="@../style/login-style.css" AnchorPane.bottomAnchor="-1.0" AnchorPane.rightAnchor="-0.25" AnchorPane.topAnchor="-1.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.client.LoginController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <Button fx:id="loginButton" layoutX="720.0" layoutY="460.0" mnemonicParsing="false" onAction="#handleLogin" text="Login to Buggr" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="670.0" AnchorPane.rightAnchor="670.0" AnchorPane.topAnchor="440.0" />
+      <AnchorPane layoutX="520.0" layoutY="233.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="520.0" AnchorPane.rightAnchor="520.0" AnchorPane.topAnchor="215.0">
+         <children>
+            <AnchorPane layoutX="38.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField fx:id="emailField" layoutX="280.0" layoutY="37.0" promptText="Enter your email" text="jann-terrowis@gmail.com" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="34.0" />
+                  <Label layoutX="36.0" layoutY="41.0" text="Email" AnchorPane.leftAnchor="34.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+               <children>
+                  <PasswordField fx:id="passwordField" layoutX="228.0" layoutY="37.0" promptText="Enter your password" text="password" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="34.0" />
+                  <Label layoutX="34.0" layoutY="41.0" text="Password" AnchorPane.leftAnchor="34.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Button fx:id="closeButton" layoutX="1476.0" layoutY="8.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="30.0" prefWidth="30.0" text="Button" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
+   </children>
+</AnchorPane>

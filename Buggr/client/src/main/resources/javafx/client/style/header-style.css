@@ -1,0 +1,17 @@
+#mainPane {
+    -fx-background-color: #e9eae9;
+    -fx-font-family: 'Roboto Medium';
+}
+
+#closeButton {
+    -fx-background-image: url('../assets/images/x-sign.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-text-fill: transparent;
+    -fx-background-color: #e9eae9;
+}
+
+#logoutButton {
+    -fx-background-color: #339826;
+}
