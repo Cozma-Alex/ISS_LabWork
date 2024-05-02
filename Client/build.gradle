@@ -6,7 +6,7 @@ plugins {
     id 'org.beryx.jlink' version '2.25.0'
 }
 
-group 'client'
+group 'javafx'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -25,8 +25,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'client.client'
-    mainClass = 'client.client.HelloApplication'
+    mainModule = 'javafx.client'
+    mainClass = 'javafx.client.HelloApplication'
 }
 
 javafx {
@@ -42,6 +42,7 @@ dependencies {
     implementation('net.synedra:validatorfx:0.4.0') {
         exclude(group: 'org.openjfx')
     }
+    implementation('org.kordamp.ikonli:ikonli-javafx:12.3.1')
     implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
     implementation('eu.hansolo:tilesfx:11.48') {
         exclude(group: 'org.openjfx')
