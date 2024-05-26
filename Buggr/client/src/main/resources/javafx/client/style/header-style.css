@@ -15,3 +15,12 @@
 #logoutButton {
     -fx-background-color: #339826;
 }
+
+#backButton {
+    -fx-background-image: url('../assets/images/back.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-text-fill: transparent;
+    -fx-background-color: #e9eae9;
+}

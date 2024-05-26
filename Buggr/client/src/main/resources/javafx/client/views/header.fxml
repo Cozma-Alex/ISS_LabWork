@@ -8,8 +8,9 @@
     <children>
         <Button fx:id="closeButton" layoutX="1491.0" layoutY="17.0" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#handleClose" prefHeight="30.0" prefWidth="30.0" text="Button" AnchorPane.rightAnchor="14.599999999999909" AnchorPane.topAnchor="17.0" />
       <Button fx:id="logoutButton" layoutX="1329.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleLogout" prefHeight="35.0" prefWidth="131.0" text="Logout" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.topAnchor="15.0" />
-      <Circle fx:id="profilePictureCircle" fill="DODGERBLUE" layoutX="36.0" layoutY="33.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="18.0" />
-      <Label fx:id="usernameLabel" layoutX="66.0" layoutY="24.0" text="&lt;username&gt;" />
+      <Circle fx:id="profilePictureCircle" fill="DODGERBLUE" layoutX="88.0" layoutY="33.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="18.0" />
+      <Label fx:id="usernameLabel" layoutX="118.0" layoutY="24.0" text="&lt;username&gt;" />
+      <Button fx:id="backButton" onAction="#handleGoBack" layoutX="25.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="17.0" text="Button" />
 
     </children>
 </AnchorPane>

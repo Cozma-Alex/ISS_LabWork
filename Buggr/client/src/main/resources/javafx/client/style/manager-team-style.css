@@ -1,0 +1,16 @@
+#mainPane{
+    -fx-background-color: #f7faf5;
+    -fx-font-family: 'Roboto Medium';
+}
+
+.buttonTeam{
+    -fx-background-color: #f7faf5;
+    -fx-border-color: transparent transparent #CCCBCB transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.buttonTeam:hover{
+    -fx-background-color: #d3d5d2;
+    -fx-border-color: #CCCBCB;
+    -fx-cursor: hand;
+}

@@ -3,6 +3,7 @@ package javafx.client.UtilsControllers;
 import DTO.EmployeeResponse;
 import javafx.application.Platform;
 import javafx.client.LoginController;
+import javafx.client.ManagerControllers.TeamsPageController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,6 +24,7 @@ public class HeaderController {
     public AnchorPane mainPane;
     public Circle profilePictureCircle;
     public Label usernameLabel;
+    public Button backButton;
 
     private Stage primaryStage;
     private EmployeeResponse employeeResponse;
@@ -57,6 +59,28 @@ public class HeaderController {
 
         ImagePattern imagePattern = new ImagePattern(profilePicture);
         this.profilePictureCircle.setFill(imagePattern);
+        closeButton.setStyle("-fx-cursor: hand;");
+        logoutButton.setStyle("-fx-cursor: hand;");
+        backButton.setStyle("-fx-cursor: hand;");
+        backButton.setVisible(false);
 
+    }
+
+    public void handleGoBack(ActionEvent actionEvent) throws IOException {
+        Font.loadFont(getClass().getResourceAsStream("/javafx/client/assets/fonts/Roboto/Roboto-Medium.ttf"), 12);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/javafx/client/views/teams-page-view.fxml"));
+        AnchorPane root = fxmlLoader.load();
+        TeamsPageController controller = fxmlLoader.getController();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        controller.setData(primaryStage, employeeResponse);
+        Platform.runLater(() -> {
+            primaryStage.setMaximized(false);
+            primaryStage.setMaximized(true);
+        });
+    }
+
+    public void setBackButton(boolean b) {
+        backButton.setVisible(b);
     }
 }

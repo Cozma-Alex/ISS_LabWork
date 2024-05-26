@@ -5,6 +5,7 @@ import javafx.server.Repositories.RepositoryTask;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Service
@@ -45,4 +46,7 @@ public class ServiceTask {
         }
     }
 
+    public ArrayList<Task> getTasksByTeam(UUID idTeam) {
+        return repositoryTask.findByTeam(idTeam);
+    }
 }

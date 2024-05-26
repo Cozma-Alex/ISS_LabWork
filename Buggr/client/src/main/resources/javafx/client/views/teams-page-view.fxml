@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="mainPane" prefHeight="824.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.client.ManagerControllers.TeamsPageController">
+<AnchorPane fx:id="mainPane" prefHeight="824.0" stylesheets="@../style/teams-page-style.css" prefWidth="1536.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.client.ManagerControllers.TeamsPageController">
     <children>
         <AnchorPane fx:id="header" prefHeight="65.0" stylesheets="@../style/header-style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         <VBox fx:id="mainContent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="135.0" />
