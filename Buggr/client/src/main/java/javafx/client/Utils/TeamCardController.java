@@ -1,4 +1,4 @@
-package javafx.client.UtilsControllers;
+package javafx.client.Utils;
 
 import DTO.EmployeeResponse;
 import DTO.TeamDTO;

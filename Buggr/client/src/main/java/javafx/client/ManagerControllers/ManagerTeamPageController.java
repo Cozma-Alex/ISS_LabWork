@@ -3,21 +3,26 @@ package javafx.client.ManagerControllers;
 import DTO.EmployeeResponse;
 import DTO.TaskDTO;
 import DTO.TeamDTO;
-import Models.Task;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.client.UtilsControllers.HeaderController;
+import javafx.client.Utils.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.net.http.HttpResponse;
 
@@ -33,11 +38,16 @@ public class ManagerTeamPageController {
     public AnchorPane header;
     public Circle circleImageTeam;
     public Label teamNameLabel;
-    public TableColumn titleColumn;
-    public TableColumn checkboxColumn;
-    public TableColumn taskColumn;
-    public TableColumn statusColumn;
-    public TableColumn priorityColumn;
+
+    public TableColumn<TaskRowTable, TaskRowTable> titleColumn;
+    public TableColumn<TaskRowTable, String> checkboxColumn;
+    public TableColumn<TaskRowTable, String> taskColumn;
+    public TableColumn<TaskRowTable, String> statusColumn;
+    public TableColumn<TaskRowTable, String> priorityColumn;
+    public TableView tableView;
+
+    public ArrayList<TaskRowTable> selectedTasks = new ArrayList<>();
+
     private Stage primaryStage;
     private EmployeeResponse employeeResponse;
     private TeamDTO team;
@@ -80,11 +90,121 @@ public class ManagerTeamPageController {
         setHeaderAlignment(statusColumn, "Status");
         setHeaderAlignment(priorityColumn, "Priority");
 
-        ArrayList<TaskDTO> tasks = getAllTasks();
-
-        for (TaskDTO task : tasks) {
-            System.out.println(task);
+        ArrayList<TaskDTO> tasks = new ArrayList<>();
+        while (tasks.isEmpty()) {
+            tasks = getAllTasks();
         }
+
+        ArrayList<TaskRowTable> taskRowTables = new ArrayList<>();
+        for (var task : tasks) {
+            taskRowTables.add(new TaskRowTable(task));
+        }
+
+        addTasksToTable(taskRowTables);
+
+    }
+
+    private void addTasksToTable(ArrayList<TaskRowTable> tasks) {
+
+        checkboxColumn.setCellValueFactory(new PropertyValueFactory<>("checkbox"));
+        checkboxColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText(null);
+                    Label checkbox = new Label();
+                    ImageView imageView = new ImageView();
+                    imageView.setFitHeight(20);
+                    imageView.setFitWidth(20);
+                    checkbox.setGraphic(imageView);
+
+                    if ("true".equals(item)) {
+                        imageView.setImage(new Image("javafx/client/assets/images/filled_checkbox.png"));
+                    } else {
+                        imageView.setImage(new Image("javafx/client/assets/images/checkbox.png"));
+                    }
+
+                    checkboxColumn.setCellFactory(column -> new TableCell<>() {
+                        @Override
+                        protected void updateItem(String item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (empty || item == null) {
+                                setText(null);
+                                setGraphic(null);
+                            } else {
+                                setText(null);
+                                Label checkbox = new Label();
+                                ImageView imageView = new ImageView();
+                                imageView.setFitHeight(20);
+                                imageView.setFitWidth(20);
+                                checkbox.setGraphic(imageView);
+
+                                if ("true".equals(item)) {
+                                    imageView.setImage(new Image("javafx/client/assets/images/filled_checkbox.png"));
+                                } else {
+                                    imageView.setImage(new Image("javafx/client/assets/images/checkbox.png"));
+                                }
+
+                                checkbox.setOnMouseClicked(event -> {
+                                    TaskRowTable taskRowTable = getTableView().getItems().get(getIndex());
+                                    if ("true".equals(taskRowTable.getCheckbox())) {
+                                        imageView.setImage(new Image("javafx/client/assets/images/checkbox.png"));
+                                        taskRowTable.setCheckbox("false");
+                                        selectedTasks.remove(taskRowTable);
+                                        System.out.println(selectedTasks.size());
+                                    } else {
+                                        imageView.setImage(new Image("javafx/client/assets/images/filled_checkbox.png"));
+                                        taskRowTable.setCheckbox("true");
+                                        selectedTasks.add(taskRowTable);
+                                        System.out.println(selectedTasks.size());
+                                    }
+                                    getTableView().refresh();
+                                });
+
+                                setGraphic(checkbox);
+                            }
+                        }
+                    });
+
+                    setGraphic(checkbox);
+                }
+            }
+        });
+
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        titleColumn.setCellValueFactory(cellData -> new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue()));
+        titleColumn.setCellFactory(new Callback<TableColumn<TaskRowTable, TaskRowTable>, TableCell<TaskRowTable, TaskRowTable>>() {
+            @Override
+            public TableCell<TaskRowTable, TaskRowTable> call(TableColumn<TaskRowTable, TaskRowTable> param) {
+                return new TaskTitleTableCell();
+            }
+        });
+
+        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        statusColumn.setCellFactory(new Callback<TableColumn<TaskRowTable, String>, TableCell<TaskRowTable, String>>() {
+            @Override
+            public TableCell<TaskRowTable, String> call(TableColumn<TaskRowTable, String> param) {
+                return new TaskStatusTableCell();
+            }
+        });
+
+        taskColumn.setCellValueFactory(new PropertyValueFactory<>("taskName"));
+
+
+
+        priorityColumn.setCellValueFactory(new PropertyValueFactory<>("priority"));
+        priorityColumn.setCellFactory(new Callback<TableColumn<TaskRowTable, String>, TableCell<TaskRowTable, String>>() {
+            @Override
+            public TableCell<TaskRowTable, String> call(TableColumn<TaskRowTable, String> param) {
+                return new TaskPriorityTableCell();
+            }
+        });
+
+        tableView.getItems().addAll(tasks);
 
     }
 
@@ -134,5 +254,31 @@ public class ManagerTeamPageController {
 
         column.setGraphic(hbox);
         column.setStyle("-fx-alignment: CENTER-LEFT;");
+    }
+
+    public void handleAddNewTask(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/javafx/client/views/manager-add-task-view.fxml"));
+        try {
+            AnchorPane root = fxmlLoader.load();
+            ManagerTaskController controller = fxmlLoader.getController();
+            controller.setData( employeeResponse, team, "add");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleUpdateTask(ActionEvent actionEvent) {
+    }
+
+    public void handleCloseTask(ActionEvent actionEvent) {
+    }
+
+    public void handleAddAccount(ActionEvent actionEvent) {
+    }
+
+    public void handleUpdateAccount(ActionEvent actionEvent) {
+    }
+
+    public void handleRemoveAccount(ActionEvent actionEvent) {
     }
 }

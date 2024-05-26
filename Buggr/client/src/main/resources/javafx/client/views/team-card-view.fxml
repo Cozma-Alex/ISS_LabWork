@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane fx:id="mainPane" onMouseClicked="#handleTeamPage" prefHeight="250.0" prefWidth="250.0" stylesheets="@../style/team-card-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.client.UtilsControllers.TeamCardController">
+<AnchorPane fx:id="mainPane" onMouseClicked="#handleTeamPage" prefHeight="250.0" prefWidth="250.0" stylesheets="@../style/team-card-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.client.Utils.TeamCardController">
    <children>
       <Circle fx:id="circleProfilePicture" fill="DODGERBLUE" layoutX="125.0" layoutY="84.0" radius="62.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="63.0" AnchorPane.topAnchor="22.0" />
       <Label fx:id="teamNameLabel" layoutX="83.0" layoutY="168.0" text="&lt;Team Name&gt;" AnchorPane.topAnchor="190.0" />

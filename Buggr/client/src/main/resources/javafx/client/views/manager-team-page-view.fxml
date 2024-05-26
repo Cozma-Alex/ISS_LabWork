@@ -9,22 +9,22 @@
        <AnchorPane fx:id="header" prefHeight="65.0" stylesheets="@../style/header-style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane layoutY="66.0" maxWidth="356.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1180.0" AnchorPane.topAnchor="65.0">
          <children>
-            <Button layoutY="174.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Add a new Task" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button onAction="#handleAddNewTask" layoutY="174.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Add a new Task" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
             <Circle fx:id="circleImageTeam" fill="DODGERBLUE" layoutX="77.0" layoutY="80.0" radius="43.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
             <Label fx:id="teamNameLabel" layoutX="151.0" layoutY="64.0" text="&lt;Team Name&gt;" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="65.0" />
-            <Button layoutY="217.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Update a Task" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Button layoutY="260.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Close a Task" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Button layoutX="5.0" layoutY="303.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Add a new Account" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Button layoutY="346.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Update an Account" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Button layoutX="5.0" layoutY="389.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Remove an Account" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button onAction="#handleUpdateTask" layoutY="217.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Update a Task" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button onAction="#handleCloseTask" layoutY="260.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Close a Task" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button onAction="#handleAddAccount" layoutX="5.0" layoutY="303.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Add a new Account" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button onAction="#handleUpdateAccount" layoutY="346.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Update an Account" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Button onAction="#handleRemoveAccount" layoutX="5.0" layoutY="389.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="356.0" styleClass="buttonTeam" text="Remove an Account" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children></AnchorPane>
       <AnchorPane layoutX="508.0" layoutY="312.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="356.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
          <children>
-            <TableView layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="tableView" layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="checkboxColumn" prefWidth="40.0" />
-                <TableColumn fx:id="taskColumn" prefWidth="130.0" />
-                <TableColumn fx:id="titleColumn" prefWidth="710.0"/>
+                <TableColumn fx:id="checkboxColumn" prefWidth="25.0" />
+                <TableColumn fx:id="taskColumn" prefWidth="135.0" />
+                <TableColumn fx:id="titleColumn" prefWidth="720.0"/>
                 <TableColumn fx:id="statusColumn" prefWidth="160.0"/>
                 <TableColumn fx:id="priorityColumn" prefWidth="140.0"/>
               </columns>

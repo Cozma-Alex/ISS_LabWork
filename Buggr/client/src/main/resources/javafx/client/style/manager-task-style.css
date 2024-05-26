@@ -1,0 +1,36 @@
+#mainPane {
+    -fx-background-color: #e9eae9;
+    -fx-font-family: 'Roboto Medium';
+}
+
+#titleLabel{
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+.subtitles {
+    -fx-font-size: 13;
+    -fx-font-weight: bold;
+}
+
+.radio-button{
+    -fx-font-weight: bold;
+}
+
+#detailsTextArea{
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-color: #f6f2f2;
+}
+
+#deadlineTextField{
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-color: #f6f2f2;
+}
+
+#saveButton{
+    -fx-background-color: #27781D;
+    -fx-text-fill: white;
+    -fx-background-radius: 40;
+}
