@@ -1,5 +1,6 @@
 package Models;
 
+import DTO.TaskDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -31,10 +32,6 @@ public class Task {
     @Length(min = 10, message = "Details must be at least 10 characters")
     private String details;
 
-    @Column(name = "deadline")
-    @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime deadline;
-
     @Column(name = "status")
     @Pattern(regexp = "^(Todo|In_Progress|Done|Canceled)$", message = "Status must be either Todo, In_Progress, Done , or Canceled")
     private String status;
@@ -51,4 +48,12 @@ public class Task {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    public Task(TaskDTO task) {
+        this.id = task.getId();
+        this.taskName = task.getTaskName();
+        this.details = task.getTitle();
+        this.status = task.getStatus();
+        this.priority = task.getPriority();
+        this.type = task.getType();
+    }
 }

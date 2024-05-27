@@ -12,8 +12,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class TaskDTO {
 
-    private UUID id;
-    private String taskName;
+    private UUID id;//
+    private String taskName;//
     private String title;
     private String status;
     private String priority;

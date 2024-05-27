@@ -35,7 +35,6 @@ public class ServiceTask {
         if (taskToUpdate != null) {
             taskToUpdate.setTaskName(task.getTaskName());
             taskToUpdate.setDetails(task.getDetails());
-            taskToUpdate.setDeadline(task.getDeadline());
             taskToUpdate.setStatus(task.getStatus());
             taskToUpdate.setPriority(task.getPriority());
             taskToUpdate.setType(task.getType());

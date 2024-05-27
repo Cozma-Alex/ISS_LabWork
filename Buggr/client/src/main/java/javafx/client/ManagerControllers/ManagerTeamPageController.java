@@ -257,11 +257,16 @@ public class ManagerTeamPageController {
     }
 
     public void handleAddNewTask(ActionEvent actionEvent) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/javafx/client/views/manager-add-task-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/javafx/client/views/manager-task-controller.fxml"));
         try {
             AnchorPane root = fxmlLoader.load();
             ManagerTaskController controller = fxmlLoader.getController();
             controller.setData( employeeResponse, team, "add");
+            Stage stage = new Stage();
+            stage.setScene(new javafx.scene.Scene(root));
+            stage.show();
+            tableView.getItems().clear();
+            tableView.getItems().addAll(getAllTasks());
         } catch (IOException e) {
             e.printStackTrace();
         }
